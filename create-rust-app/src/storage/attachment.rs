@@ -114,7 +114,7 @@ impl Attachment {
             .upload(
                 key.clone(),
                 data.data,
-                content_type.clone().unwrap_or_else(|| "".to_string()),
+                content_type.clone().unwrap_or_default(),
                 checksum.clone(),
             )
             .await

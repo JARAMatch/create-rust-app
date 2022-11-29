@@ -146,11 +146,7 @@ pub fn get_sessions(
 
     let num_sessions = num_sessions.unwrap();
     let num_pages = (num_sessions / info.page_size)
-        + (if num_sessions % info.page_size != 0 {
-            1
-        } else {
-            0
-        });
+        + i64::from(num_sessions % info.page_size != 0);
 
     let resp = UserSessionResponse {
         sessions: sessions_json,
@@ -488,7 +484,7 @@ pub fn register(
 ) -> Result<(), (StatusCode, Message)> {
     let mut db = db.pool.get().unwrap();
 
-    let user = User::find_by_email(&mut db, (&item.email).to_string());
+    let user = User::find_by_email(&mut db, item.email.to_string());
 
     if let Ok(user) = user {
         if !user.activated {
