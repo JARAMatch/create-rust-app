@@ -1,4 +1,3 @@
-
 /// Create an entry in [`db`](`Connection`)'s `users` table using the data in [`item`](`UserChangeset`)
 
 /// Read from [`db`](`Connection`), querying for an entry in the `users`

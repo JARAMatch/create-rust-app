@@ -10,6 +10,7 @@ on:
       - "Cargo.toml"
 env:
   CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: true
   
 concurrency:
   group:  CI-${{ github.ref }}
