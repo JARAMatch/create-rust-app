@@ -12,7 +12,7 @@ pub fn is_rust_project(directory: &PathBuf) -> Result<bool> {
     }
 
     let is_verified_rust_project = std::process::Command::new("cargo")
-        .current_dir(&directory)
+        .current_dir(directory)
         .arg("verify-project")
         .stdout(std::process::Stdio::null())
         .status()
@@ -38,7 +38,7 @@ pub fn ensure_file(file: &PathBuf, contents: Option<&str>) -> Result<()> {
     }
 
     if contents.is_some() {
-        std::fs::write(&file, contents.unwrap())?;
+        std::fs::write(file, contents.unwrap())?;
     }
 
     Ok(())
@@ -78,7 +78,7 @@ pub fn ensure_directory(directory: &PathBuf, prompt_before_create: bool) -> Resu
             .interact()?;
 
         if proceed {
-            std::fs::remove_file(&directory)?;
+            std::fs::remove_file(directory)?;
             std::fs::create_dir_all(directory)?;
             return Ok(());
         } else {
