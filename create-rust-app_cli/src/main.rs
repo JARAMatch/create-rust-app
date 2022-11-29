@@ -272,9 +272,7 @@ fn configure_project() -> Result<()> {
         match index {
             0 => {
                 logger::message("Which backend framework are you using?");
-                logger::message(
-                    "Use UP/DOWN arrows to navigate and SPACE or ENTER to confirm.",
-                );
+                logger::message("Use UP/DOWN arrows to navigate and SPACE or ENTER to confirm.");
                 let items = vec!["actix_web", "poem"];
                 let selection = Select::with_theme(&ColorfulTheme::default())
                     .items(&items)
@@ -305,9 +303,7 @@ fn configure_project() -> Result<()> {
                 }
 
                 logger::message("Which backend framework are you using?");
-                logger::message(
-                    "Use UP/DOWN arrows to navigate and SPACE or ENTER to confirm.",
-                );
+                logger::message("Use UP/DOWN arrows to navigate and SPACE or ENTER to confirm.");
                 let items = vec!["actix_web", "poem"];
                 let selection = Select::with_theme(&ColorfulTheme::default())
                     .items(&items)
