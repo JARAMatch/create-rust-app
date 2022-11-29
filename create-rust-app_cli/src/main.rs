@@ -268,69 +268,62 @@ fn configure_project() -> Result<()> {
             .interact_on_opt(&Term::stderr())?
     };
 
-    match selection {
-        Some(index) => {
-            match index {
-                0 => {
-                    logger::message("Which backend framework are you using?");
-                    logger::message(
-                        "Use UP/DOWN arrows to navigate and SPACE or ENTER to confirm.",
-                    );
-                    let items = vec!["actix_web", "poem"];
-                    let selection = Select::with_theme(&ColorfulTheme::default())
-                        .items(&items)
-                        .default(0)
-                        .interact_on_opt(&Term::stderr())?;
+    if let Some(index) = selection {
+        match index {
+            0 => {
+                logger::message("Which backend framework are you using?");
+                logger::message("Use UP/DOWN arrows to navigate and SPACE or ENTER to confirm.");
+                let items = vec!["actix_web", "poem"];
+                let selection = Select::with_theme(&ColorfulTheme::default())
+                    .items(&items)
+                    .default(0)
+                    .interact_on_opt(&Term::stderr())?;
 
-                    match selection {
-                        Some(0) => BackendFramework::ActixWeb,
-                        Some(1) => panic!("Fatal: this feature is not yet implemented for `poem`"),
-                        _ => panic!("Fatal: Unknown backend framework specified."),
-                    };
+                match selection {
+                    Some(0) => BackendFramework::ActixWeb,
+                    Some(1) => panic!("Fatal: this feature is not yet implemented for `poem`"),
+                    _ => panic!("Fatal: Unknown backend framework specified."),
+                };
 
-                    qsync::process(
-                        vec![PathBuf::from("backend/services")],
-                        PathBuf::from("frontend/src/api.generated.ts"),
-                        false,
-                    );
+                qsync::process(
+                    vec![PathBuf::from("backend/services")],
+                    PathBuf::from("frontend/src/api.generated.ts"),
+                    false,
+                );
+            }
+            1 => {
+                // Add resource
+                let resource_name: String = Input::new()
+                    .with_prompt("Resource name")
+                    .default("".into())
+                    .interact_text()?;
+
+                if resource_name.is_empty() {
+                    return Ok(());
                 }
-                1 => {
-                    // Add resource
-                    let resource_name: String = Input::new()
-                        .with_prompt("Resource name")
-                        .default("".into())
-                        .interact_text()?;
 
-                    if resource_name.is_empty() {
-                        return Ok(());
-                    }
+                logger::message("Which backend framework are you using?");
+                logger::message("Use UP/DOWN arrows to navigate and SPACE or ENTER to confirm.");
+                let items = vec!["actix_web", "poem"];
+                let selection = Select::with_theme(&ColorfulTheme::default())
+                    .items(&items)
+                    .default(0)
+                    .interact_on_opt(&Term::stderr())?;
 
-                    logger::message("Which backend framework are you using?");
-                    logger::message(
-                        "Use UP/DOWN arrows to navigate and SPACE or ENTER to confirm.",
-                    );
-                    let items = vec!["actix_web", "poem"];
-                    let selection = Select::with_theme(&ColorfulTheme::default())
-                        .items(&items)
-                        .default(0)
-                        .interact_on_opt(&Term::stderr())?;
-
-                    let backend_framework: BackendFramework = match selection {
-                        Some(0) => BackendFramework::ActixWeb,
-                        Some(1) => BackendFramework::Poem,
-                        _ => panic!("Fatal: Unknown backend framework specified."),
-                    };
-                    project::create_resource(backend_framework, resource_name.as_ref())?;
-                    std::process::exit(0);
-                }
-                2 => return Ok(()),
-                _ => {
-                    logger::error("Not implemented");
-                    std::process::exit(1);
-                }
+                let backend_framework: BackendFramework = match selection {
+                    Some(0) => BackendFramework::ActixWeb,
+                    Some(1) => BackendFramework::Poem,
+                    _ => panic!("Fatal: Unknown backend framework specified."),
+                };
+                project::create_resource(backend_framework, resource_name.as_ref())?;
+                std::process::exit(0);
+            }
+            2 => return Ok(()),
+            _ => {
+                logger::error("Not implemented");
+                std::process::exit(1);
             }
         }
-        None => {}
     }
 
     Ok(())

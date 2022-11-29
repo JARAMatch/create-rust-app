@@ -34,7 +34,7 @@ pub fn generic_to_typsecript_type(gen_ty: &syn::GenericArgument) -> String {
 // TODO: leverage TSYNC
 pub fn to_typescript_type(ty: &syn::Type) -> String {
     match ty {
-        syn::Type::Reference(p) => to_typescript_type(&*p.elem),
+        syn::Type::Reference(p) => to_typescript_type(&p.elem),
         syn::Type::Path(p) => {
             let segment = p.path.segments.last().unwrap();
             let ident = &segment.ident;

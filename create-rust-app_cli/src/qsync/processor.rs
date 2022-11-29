@@ -623,6 +623,6 @@ pub fn process(input_paths: Vec<PathBuf>, output_path: PathBuf, is_debug: bool) 
     }
 
     for unprocessed_file in state.unprocessed_files {
-        println!("• {:#?}", file = unprocessed_file);
+        println!("• {file:#?}", file = unprocessed_file);
     }
 }
