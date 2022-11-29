@@ -145,8 +145,7 @@ pub fn get_sessions(
     }
 
     let num_sessions = num_sessions.unwrap();
-    let num_pages = (num_sessions / info.page_size)
-        + i64::from(num_sessions % info.page_size != 0);
+    let num_pages = (num_sessions / info.page_size) + i64::from(num_sessions % info.page_size != 0);
 
     let resp = UserSessionResponse {
         sessions: sessions_json,
