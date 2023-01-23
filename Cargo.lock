@@ -3414,9 +3414,9 @@ checksum = "59547bce71d9c38b83d9c0e92b6066c4253371f15005def0c30d9657f50c7642"
 
 [[package]]
 name = "tsync"
-version = "1.6.0"
+version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ba69e27ea9b6a5bf7d0fa8aebc2cad7d21b6aa907a0fcfd68496f7bbf36fa98e"
+checksum = "fcd4a7c45fe4238459ba125a7755d898eaed87dacb98df558e6df15b8de046dc"
 dependencies = [
  "convert_case 0.6.0",
  "structopt",
