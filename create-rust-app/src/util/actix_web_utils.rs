@@ -50,9 +50,6 @@ pub async fn render_views(req: HttpRequest) -> HttpResponse {
     let path = req.path();
 
     #[cfg(debug_assertions)]
-    if path.eq("/__vite_ping") {
-        println!("The vite dev server seems to be down...");
-    }
     {
         // Catch viteJS ping requests and try to handle them gracefully
         // Request the browser to refresh the page (maybe the server is up but the browser just can't reconnect)
@@ -83,6 +80,9 @@ pub async fn render_views(req: HttpRequest) -> HttpResponse {
             let mut count = REQUEST_REFRESH_COUNT.lock().unwrap();
             *count = 0;
         }
+    }
+    if path.eq("/__vite_ping") {
+        println!("The vite dev server seems to be down...");
     }
 
     let mut template_path = to_template_name(req.path());
