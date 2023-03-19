@@ -37,7 +37,7 @@ libsqlite3-sys = { version = "0.25", optional = true, features = ["bundled"] }
 rust-argon2 = { optional=true, version="1.0" }
 rand = { optional=true, version="0.8.5" }
 jsonwebtoken = { optional=true, version="8.2.0" }
-tsync = { optional=true, version="1.6.0" }
+tsync = { optional=true, git="https://github.com/JARAMatch/tsync", branch="main", version="1.6"}
 chrono = { optional=true, version = "0.4.23", default-features = false, features = ["clock", "serde"] }
 
 # plugin_dev
