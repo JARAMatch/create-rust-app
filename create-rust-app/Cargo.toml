@@ -43,7 +43,7 @@ chrono = { optional=true, version = "0.4.23", default-features = false, features
 # plugin_dev
 diesel_migrations = { optional=true, version="2.0.0" }
 cargo_metadata = { optional=true, version="0.15.2" }
-watchexec = { optional=true, version="2.0.2" }
+watchexec = { optional=true, version="2.2.0" }
 #### tracing = { optional=true, version="0.1" }
 #### tracing-subscriber = { optional=true, version="0.3.16", features=["env-filter"] }
 reqwest = { optional=true, version="0.11.13" }
