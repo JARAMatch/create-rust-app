@@ -513,7 +513,7 @@ dependencies = [
  "aws-endpoint 0.8.0",
  "aws-http 0.8.0",
  "aws-sig-auth 0.8.0",
- "aws-sigv4 0.8.0",
+ "aws-sigv4 0.8.1",
  "aws-smithy-async 0.38.0",
  "aws-smithy-client 0.38.0",
  "aws-smithy-eventstream",
@@ -579,7 +579,7 @@ version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3fa501148ae6b5e0de5eeb8c4cf87fa3403d9a00077e543ad64011da781f73a6"
 dependencies = [
- "aws-sigv4 0.8.0",
+ "aws-sigv4 0.8.1",
  "aws-smithy-eventstream",
  "aws-smithy-http 0.38.0",
  "aws-types 0.8.0",
@@ -603,9 +603,9 @@ dependencies = [
 
 [[package]]
 name = "aws-sigv4"
-version = "0.8.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "51d371fb688d909e5b866ff1f297bbec4621eed4f9fcdac566fcc33541f0c6a6"
+checksum = "df08171e40dff9951df758f6648009800d26f4b62077edd2b567dd678416fd80"
 dependencies = [
  "aws-smithy-eventstream",
  "aws-smithy-http 0.38.0",
